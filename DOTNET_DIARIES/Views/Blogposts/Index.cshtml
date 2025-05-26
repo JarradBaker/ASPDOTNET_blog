@@ -13,8 +13,8 @@
         <div class="row">
             @foreach (var blogpost in Model)
             {
-                <div class="col-md-4">
-                    <div class="d-flex justify-content-center">
+                <div class="col-md-4 border card">
+                    <div class="d-flex justify-content-center mt-3">
                         <h2>@blogpost.Title</h2>
                     </div>
                     <div class="d-flex justify-content-evenly mb-3">
@@ -39,11 +39,15 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         @*<p>@blogpost.Content</p>*@
-                        <p>@BlogHelpers.Truncate(@blogpost.Content, 25)</p>
+                        <p>@BlogHelpers.Truncate(@blogpost.Content, 50)</p>
                     </div>
                     
-                    <div class="d-flex justify-content-center">
+                    @*<div class="d-flex justify-content-center mb-3">
                         <a href="@Url.Action("Details", "Blogposts", new { id = blogpost.Id })">Read more</a>
+                    </div>*@
+
+                    <div class="d-flex justify-content-center mb-3">
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@blogpost.Id">Read More</a>
                     </div>
                     
                 </div>

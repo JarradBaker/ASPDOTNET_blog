@@ -39,5 +39,33 @@ namespace BlogpostsController
             return View(blogpost);
         }
 
+        // GET: Blogposts/Create
+        public IActionResult Create()
+        {
+            ViewBag.Tags = _context.Tags.ToList();
+            return View();
+        }
+
+
+        // POST: Blogposts/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Blogpost blogpost, int[] selectedTags)
+        {
+            if (ModelState.IsValid)
+            {
+                blogpost.PostedDate = DateTime.Now;
+                blogpost.BlogpostTags = selectedTags.Select(tagId => new BlogpostTag
+                {
+                    TagId = tagId
+                }).ToList();
+
+                _context.Add(blogpost);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.Tags = _context.Tags.ToList();
+            return View(blogpost);
+        }
     }
 }
