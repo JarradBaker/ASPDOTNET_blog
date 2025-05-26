@@ -1,0 +1,52 @@
+﻿@model List<DOTNET_DIARIES.Models.Blogpost>
+
+@{
+    ViewData["Title"] = "BlogpostsIndex";
+}
+
+@if (Model != null)
+{
+
+    <div class="container">
+        <h1 class="text-center">Blogposts</h1>
+        <div class="row">
+            @foreach (var blogpost in Model)
+            {
+                <div class="col-md-4">
+                    <div class="d-flex justify-content-center">
+                        <h2>@blogpost.Title</h2>
+                    </div>
+                    @*<div class="d-flex justify-content-center">
+                        @foreach (var tag in blogpost.BlogpostTags)
+                        {
+                            <span class="badge bg-secondary">@tag.TagId</span>
+                        }
+                    </div>*@
+                    <div class="d-flex justify-content-center">
+                        <img src="@blogpost.ImageUrl" alt="Blogpost Image" class="img-fluid" />
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <p>@blogpost.PostedDate.ToString("MMMM dd, yyyy")</p>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <p>@blogpost.Content</p>
+                    </div>
+                    
+                    
+                    <a href="@Url.Action("Details", "Blogposts", new { id = blogpost.Id })">Read more</a>
+                </div>
+            }
+        </div>
+
+        
+        
+        @*
+        <div class="row"></div>
+            <div class="col-md-12">
+                <a href="@Url.Action("Create", "Blogposts")" class="btn btn-primary">Create New Blogpost</a>
+            </div>
+        </div>
+        *@
+    </div>
+
+}
