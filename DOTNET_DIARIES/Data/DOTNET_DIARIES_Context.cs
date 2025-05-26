@@ -27,7 +27,7 @@ public class DOTNET_DIARIES_Context : DbContext
         modelBuilder.Entity<BlogpostTag>()
             .HasOne(t => t.Tag)
             .WithMany(bt => bt.BlogpostTags)
-            .HasForeignKey(t => t.BlogpostId);
+            .HasForeignKey(t => t.TagId);
 
         modelBuilder.Entity<Blogpost>().HasData(new Blogpost
         {

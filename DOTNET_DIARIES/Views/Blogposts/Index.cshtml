@@ -16,12 +16,20 @@
                     <div class="d-flex justify-content-center">
                         <h2>@blogpost.Title</h2>
                     </div>
-                    @*<div class="d-flex justify-content-center">
-                        @foreach (var tag in blogpost.BlogpostTags)
+                    <div class="d-flex justify-content-evenly mb-3">
+                        @if (blogpost.BlogpostTags != null)
                         {
-                            <span class="badge bg-secondary">@tag.TagId</span>
+                            @foreach (var tag in blogpost.BlogpostTags)
+                            {
+                            <span class="badge bg-secondary p-2">@tag.Tag.Name</span>
+                            }
                         }
-                    </div>*@
+                        else
+                        {
+                            <p>Can't find Blogpost Tags</p>
+                        }
+                        
+                    </div>
                     <div class="d-flex justify-content-center">
                         <img src="@blogpost.ImageUrl" alt="Blogpost Image" class="img-fluid" />
                     </div>

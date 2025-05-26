@@ -15,7 +15,13 @@ namespace BlogpostsController
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Blogposts.ToListAsync());
+            var blogposts = await _context.Blogposts
+                .Include(b => b.BlogpostTags)
+                .ThenInclude(bt => bt.Tag) // if you want tag details, not just TagId
+                .ToListAsync();
+
+            return View(blogposts);
+            //return View(await _context.Blogposts.ToListAsync());
         }
 
         public async Task<IActionResult> Details(int? id)
