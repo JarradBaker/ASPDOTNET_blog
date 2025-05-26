@@ -1,0 +1,29 @@
+@model DOTNET_DIARIES.Models.Tag
+
+@{
+    ViewData["Title"] = "Create Tag";
+    var tags = ViewBag.Tags as List<DOTNET_DIARIES.Models.Tag>;
+}
+
+<h1>Create Tag</h1>
+
+@if (tags != null && tags.Any())
+{
+    <h4>Existing Tags</h4>
+    <ul>
+        @foreach (var tag in tags)
+        {
+            <li>@tag.Name</li>
+        }
+    </ul>
+}
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" asp-controller="Blogposts" class="btn btn-secondary">Cancel</a>
+</form>
