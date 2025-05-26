@@ -1,4 +1,5 @@
 ﻿@model List<DOTNET_DIARIES.Models.Blogpost>
+@using DOTNET_DIARIES.Helpers
 
 @{
     ViewData["Title"] = "BlogpostsIndex";
@@ -37,11 +38,14 @@
                         <p>@blogpost.PostedDate.ToString("MMMM dd, yyyy")</p>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <p>@blogpost.Content</p>
+                        @*<p>@blogpost.Content</p>*@
+                        <p>@BlogHelpers.Truncate(@blogpost.Content, 25)</p>
                     </div>
                     
+                    <div class="d-flex justify-content-center">
+                        <a href="@Url.Action("Details", "Blogposts", new { id = blogpost.Id })">Read more</a>
+                    </div>
                     
-                    <a href="@Url.Action("Details", "Blogposts", new { id = blogpost.Id })">Read more</a>
                 </div>
             }
         </div>
