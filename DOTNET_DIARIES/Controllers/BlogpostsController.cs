@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using DOTNET_DIARIES.Models;
 using DOTNET_DIARIES.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BlogpostsController
 {
@@ -40,6 +41,7 @@ namespace BlogpostsController
         }
 
         // GET: Blogposts/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewBag.Tags = _context.Tags.ToList();
@@ -50,6 +52,7 @@ namespace BlogpostsController
         // POST: Blogposts/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(Blogpost blogpost, int[] selectedTags)
         {
             if (ModelState.IsValid)

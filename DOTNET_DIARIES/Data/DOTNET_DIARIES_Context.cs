@@ -1,10 +1,11 @@
 using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using DOTNET_DIARIES.Models;
 
 namespace DOTNET_DIARIES.Data;
 
-public class DOTNET_DIARIES_Context : DbContext
+public class DOTNET_DIARIES_Context : IdentityDbContext
 {
     public DOTNET_DIARIES_Context(DbContextOptions<DOTNET_DIARIES_Context> options)
         : base(options)
@@ -13,21 +14,18 @@ public class DOTNET_DIARIES_Context : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<BlogpostTag>().HasKey(bt => new 
-        { 
-            bt.BlogpostId, 
-            bt.TagId 
-        });
+        modelBuilder.Entity<BlogpostTag>()
+        .HasKey(bt => new { bt.BlogpostId, bt.TagId });
 
         modelBuilder.Entity<BlogpostTag>()
-            .HasOne(b => b.Blogpost)
-            .WithMany(bt => bt.BlogpostTags)
-            .HasForeignKey(b => b.BlogpostId);
+            .HasOne(bt => bt.Blogpost)
+            .WithMany(b => b.BlogpostTags)
+            .HasForeignKey(bt => bt.BlogpostId);
 
         modelBuilder.Entity<BlogpostTag>()
-            .HasOne(t => t.Tag)
-            .WithMany(bt => bt.BlogpostTags)
-            .HasForeignKey(t => t.TagId);
+            .HasOne(bt => bt.Tag)
+            .WithMany(t => t.BlogpostTags)
+            .HasForeignKey(bt => bt.TagId);
 
         modelBuilder.Entity<Blogpost>().HasData(new Blogpost
         {
