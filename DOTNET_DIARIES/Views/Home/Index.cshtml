@@ -1,8 +1,52 @@
-﻿@{
+﻿@model List<DOTNET_DIARIES.Models.Blogpost>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to DOTNET Diaries!</h1>
+    <p>This is a website about programming and my journey building cool stuff. Here you'll find blog posts, tutorials, and project showcases.</p>
 </div>
+
+@if (Model != null && Model.Any())
+{
+    <div class="container mt-5">
+        <h2 class="text-center">Latest Blogposts</h2>
+        <div class="row">
+            @foreach (var blogpost in Model)
+            {
+                <div class="col-md-4 border card mb-4">
+                    <div class="d-flex justify-content-center mt-3">
+                        <h3>@blogpost.Title</h3>
+                    </div>
+                    <div class="d-flex justify-content-evenly mb-3">
+                        @if (blogpost.BlogpostTags != null)
+                        {
+                            @foreach (var tag in blogpost.BlogpostTags)
+                            {
+                                <span class="badge bg-secondary p-2">@tag.Tag.Name</span>
+                            }
+                        }
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <img src="@blogpost.ImageUrl" alt="Blogpost Image" class="img-fluid" />
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <p>@blogpost.PostedDate.ToString("MMMM dd, yyyy")</p>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <p>@blogpost.Content.Substring(0, Math.Min(100, blogpost.Content.Length))...</p>
+                    </div>
+                    <div class="d-flex justify-content-center mb-3">
+                        <a class="btn btn-info" asp-controller="Blogposts" asp-action="Details" asp-route-id="@blogpost.Id">Read More</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <p class="text-center mt-5">No blogposts found.</p>
+}
