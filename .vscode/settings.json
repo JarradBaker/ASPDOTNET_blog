@@ -1,0 +1,5 @@
+{
+    "appService.preDeployTask": "publish-release",
+    "appService.deploySubpath": "DOTNET_DIARIES\\bin\\Release\\net8.0\\publish",
+    "appService.defaultWebAppToDeploy": "/subscriptions/bd2a4e7e-5a67-4874-9a29-d1ff62a3d185/resourceGroups/jarrad-baker_group/providers/Microsoft.Web/sites/jarrad-baker"
+}

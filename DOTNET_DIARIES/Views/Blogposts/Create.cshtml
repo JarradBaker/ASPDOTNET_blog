@@ -14,6 +14,16 @@
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
     <div class="form-group">
+        <label asp-for="ShortDescription"></label>
+        <input asp-for="ShortDescription" class="form-control" />
+        <span asp-validation-for="ShortDescription" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UrlHandle"></label>
+        <input asp-for="UrlHandle" class="form-control" />
+        <span asp-validation-for="UrlHandle" class="text-danger"></span>
+    </div>
+    <div class="form-group">
         <label asp-for="ImageUrl"></label>
         <input asp-for="ImageUrl" class="form-control" />
         <span asp-validation-for="ImageUrl" class="text-danger"></span>
@@ -40,7 +50,7 @@
 </form>
 
 @section Scripts {
-    <script>
+    @*<script>
         var editor = new FroalaEditor('#content');
-    </script>
+    </script>*@
 }
