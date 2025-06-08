@@ -39,7 +39,7 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         @*<p>@blogpost.Content</p>*@
-                        <p>@BlogHelpers.Truncate(@blogpost.Content, 50)</p>
+                        <p>@BlogHelpers.Truncate(@blogpost.ShortDescription, 50)</p>
                     </div>
                     
                     @*<div class="d-flex justify-content-center mb-3">
@@ -47,7 +47,7 @@
                     </div>*@
 
                     <div class="d-flex justify-content-center mb-3">
-                        <a class="btn btn-info" asp-action="Details" asp-route-id="@blogpost.Id">Read More</a>
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@blogpost.UrlHandle">Read More</a>
                     </div>
                     
                 </div>

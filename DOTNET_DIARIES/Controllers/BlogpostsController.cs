@@ -25,12 +25,19 @@ namespace BlogpostsController
             //return View(await _context.Blogposts.ToListAsync());
         }
 
-        public async Task<IActionResult> Details(int? id)
+        // Update the Details action to use urlHandle instead of id
+        [Route("Blogposts/Details/{urlHandle}")]
+        public async Task<IActionResult> Details(string urlHandle)
         {
+            if (string.IsNullOrEmpty(urlHandle))
+            {
+                return NotFound();
+            }
+
             var blogpost = await _context.Blogposts
                 .Include(bt => bt.BlogpostTags)
                 .ThenInclude(t => t.Tag)
-                .FirstOrDefaultAsync(x => x.Id == id);
+                .FirstOrDefaultAsync(x => x.UrlHandle == urlHandle);
 
             if (blogpost == null)
             {
