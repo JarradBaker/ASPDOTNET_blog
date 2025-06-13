@@ -1,6 +1,10 @@
 using DOTNET_DIARIES.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using dotenv.net;
+using DOTNET_DIARIES.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +18,10 @@ builder.Services.AddDbContext<DOTNET_DIARIES_Context>(options =>
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<DOTNET_DIARIES_Context>();
+
+// Configure Cloudinary
+builder.Services.AddScoped<IImageRepository, CloudinaryImageRepository>();
+
 
 var app = builder.Build();
 
