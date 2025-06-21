@@ -27,7 +27,7 @@ public class DOTNET_DIARIES_Context : IdentityDbContext
             .WithMany(t => t.BlogpostTags)
             .HasForeignKey(bt => bt.TagId);
 
-        modelBuilder.Entity<Blogpost>().HasData(new Blogpost
+        /*modelBuilder.Entity<Blogpost>().HasData(new Blogpost
         {
             Id = 1,
             Title = "Blogpost about C#",
@@ -55,7 +55,7 @@ public class DOTNET_DIARIES_Context : IdentityDbContext
         {
             BlogpostId = 1,
             TagId = 2
-        });
+        });*/
 
         base.OnModelCreating(modelBuilder);
     }
