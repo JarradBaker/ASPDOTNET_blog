@@ -4,9 +4,9 @@
 }
 
 <div class="container">
-    <h1 class="text-center">@Model.Title</h1>
+    <h1 class="text-center mt-5 mb-5">@Model.Title</h1>
 
-    <div class="row text-center mb-4">
+    <div class="row mb-4">
         <div class="col-md-12">
             <div class="d-flex justify-content-center">
                 <img src="@Model.ImageUrl" alt="Blogpost Image" class="img-fluid" style="max-width:600px; max-height:400px; width:100%; height:auto; object-fit:cover;"/>
@@ -25,3 +25,4 @@
             <a href="@Url.Action("Index", "Blogposts")" class="btn btn-primary">Back to Blogposts</a>
         </div>
     </div>
+</div>
