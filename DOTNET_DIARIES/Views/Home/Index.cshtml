@@ -4,10 +4,31 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+<!---<div class="text-center">
     <h1 class="display-4">WELCOME TO MY WEBSITE</h1>
     <p>This </p>
+</div>--->
+<div class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-welcome">Welcome to</div>
+        <div class="hero-subheading">
+            <span class="line"></span>
+            THE HOME OF
+            <span class="line"></span>
+        </div>
+        <div class="hero-award">AWARD WINNING WEB DESIGNS</div>
+        <button class="hero-cta-btn">SCHEDULE A CALL NOW</button>
+        <div class="hero-social-icons">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
 </div>
+
 
 @if (Model != null && Model.Any())
 {

@@ -19,8 +19,121 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: black;
+  color: white;
+}
+
+h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #fff;
+  text-shadow: 2px 2px 8px #222;
+}
+
+.card {
+  background: rgba(30,30,30,0.85);
+  margin: 0 5px;
 }
 
 .text-center {
   text-align: center;
+}
+
+.hero-bg {
+  background: url('../images/background.png') center/cover no-repeat;
+  position: relative;
+  min-height: 600px;
+  margin-bottom: 0;
+  border-radius: 0 0 40px 40px;
+  overflow: hidden;
+}
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30,30,30,0.85);
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 60px;
+    color: #fff;
+}
+.hero-welcome {
+    font-family: 'Pacifico', cursive;
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 8px #222;
+}
+.hero-subheading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.hero-subheading .line {
+    flex: 1;
+    height: 3px;
+    background: #fff;
+    margin: 0 1rem;
+    border-radius: 2px;
+    max-width: 100px;
+}
+.hero-award {
+    font-family: 'Montserrat', serif;
+    font-size: 2.5rem;
+    color: #ffd700;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 6px #222;
+}
+.hero-cta-btn {
+    background: #222;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 3rem;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px #111;
+    transition: background 0.2s;
+}
+.hero-cta-btn:hover {
+    background: #16b3b3;
+    color: #222;
+}
+.hero-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.hero-social-icons a {
+    background: #16b3b3;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #222;
+    font-size: 2rem;
+    transition: background 0.2s;
+    text-decoration: none;
+}
+.hero-social-icons a:hover {
+    background: #ffd700;
+    color: #222;
 }
